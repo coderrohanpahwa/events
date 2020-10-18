@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Login {% endblock title %}
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="Submit" value="Submit" class="btn btn-primary">
+    </form>
+{% if messages %}
+    {% for i in messages %}
+        {{i}}
+    {% endfor %}
+{% endif %}
+{% endblock %}

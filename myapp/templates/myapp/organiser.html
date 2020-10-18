@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+{% block title %}
+Organise An Event {% endblock title %}
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    {% for i in form %}
+        {{i.label_tag}} {{i}} {{i.errors|striptags}}
+    {% endfor %}
+    <input type="Submit" value="Submit" class="btn btn-primary mt-4">
+</form>
+{% endblock body %}

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  {% if not request.user.is_authenticated %}
+    <a class="navbar-brand" href="{% url 'homepage' %}">Guest</a>
+  {% else %}
+    <a class="navbar-brand" href="{% url 'homepage' %}">{{request.user}}</a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        {% if not request.user.is_authenticated %}
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="{% url 'register' %}">Register<span class="sr-only">(current)</span></a>
+      </li>
+        {% else %}
+        <li class="nav-item">
+
+        <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
+      </li>
+        {% endif %}
+        <li class="nav-item ">
+        <a class="nav-link" href="{% url 'organise' %}">Organise an event <span class="sr-only">(current)</span></a>
+      </li>
+      </ul>
+
+  </div>
+</nav>
